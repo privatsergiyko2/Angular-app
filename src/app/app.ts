@@ -13,17 +13,7 @@ import {IProfile} from './data/interfaces/profile.interfaces';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('Angular-app');
-  profile = inject(Profile);
-  cdr = inject(ChangeDetectorRef);
-  profiles: IProfile[] | any = []
-  constructor() {
-    this.profile.getTestAccounts().subscribe(val =>{
-      console.log(val);
-      this.profiles = val
-      this.cdr.detectChanges()
-    })
-  }
+
 }
 
 
