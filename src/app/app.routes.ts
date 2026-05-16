@@ -12,5 +12,6 @@ export const routes: Routes = [
       {path: "profile", component: ProfilePage},
     ]
   },
+
   {path: "login", component: LoginPage}
 ];
