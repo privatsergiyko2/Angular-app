@@ -1,7 +1,10 @@
+@import "margins";
+
 :root {
   --dark-color: #000000;
   --light-color: #FFFFFF;
   --primary-color: #AE7AFF;
+  --gray-color: #5F646D;
 }
 
 *,
@@ -14,8 +17,9 @@
 
 
 body {
-  background:var(--dark-color);
+  background: var(--dark-color);
   color: var(--light-color);
+  //background-image: url(/assets/imgs/background.jpg);
 }
 
 
@@ -31,12 +35,40 @@ body {
 
 
 .btn {
+  width: 50%;
   border: none;
   background: var(--primary-color);
   color: var(--dark-color);
   padding: 10px 20px;
   font-size: 14px;
   line-height: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid var(--dark-color);
+}
+
+.btn-shadow {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: var(--gray-color);
+    z-index: -1;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.h1 {
+  margin-bottom: 60px;
+  font-size: 48px;
+  line-height: 54px;
+  font-weight: 800;
 }
 
 .h6 {
@@ -51,3 +83,29 @@ body {
   line-height: 20px;
 }
 
+
+.tt-control-label {
+
+  margin-bottom: 32px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  display: block;
+}
+
+
+.tt-input {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  width: 50%;
+  margin-right: 100px;
+  display: block;
+  border: 1px solid var(--light-color);
+  border-radius: 4px;
+  padding: 12px 26px;
+  background: var(--dark-color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--light-color);
+}
