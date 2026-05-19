@@ -20,8 +20,8 @@ export class LoginPage {
  isPasswordVisible = signal<boolean>(false)
 
   form = new FormGroup({
-    username: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required)
+    username: new FormControl('eternalbliss68', Validators.required),
+    password: new FormControl('RpjmpkyrHs', Validators.required)
   })
 
 
@@ -30,7 +30,7 @@ export class LoginPage {
      //@ts-ignore
       this.authService.login(this.form.value)
         .subscribe(res => {
-          this.router.navigate(['']);
+          this.router.navigate(['/']);
           console.log(res);
         })
     }
