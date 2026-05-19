@@ -6,12 +6,12 @@ import {Component, Input} from '@angular/core';
   imports: [],
   template: "<svg:use [attr.href]='href'></svg:use>",
   styles: [''],
+  standalone: true
 })
 export class SvgIcon {
   @Input() icon = "";
 
   get href() {
-    console.log('test')
     return `/assets/svg/${this.icon}.svg#${this.icon}`;
   }
 }

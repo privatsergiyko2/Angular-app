@@ -7,7 +7,7 @@
 .main-menu-list {
   display: grid;
   grid-gap: 8px;
-
+  list-style: none;
 }
 
 
@@ -32,5 +32,14 @@
   &:focus-visible {
     background: var(--dark-hover-color);
     color: var(--primary-color);
+
+    .menu-item svg {
+      color: var(--primary-color);
+    }
   }
+}
+
+.menu-item svg {
+  width: 16px;
+  height: 16px;
 }
