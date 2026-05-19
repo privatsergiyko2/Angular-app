@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {catchError, tap, throwError} from 'rxjs';
-import {TokenResponse} from './auth.interface';
+import {TokenResponse, TokenResponseFailure} from './auth.interface';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 
@@ -35,8 +35,12 @@ export class Auth {
 
     return this.http.post<TokenResponse>(`${this.baseApiUrl}token`,
       fd).pipe(
-      tap(val => this.saveTokens(val))
+      tap(val => this.saveTokens(val)),
+      catchError((err: TokenResponseFailure) => {
+        return throwError(err)
+      })
     )
+
 
   }
 
@@ -48,7 +52,7 @@ export class Auth {
       }
     ).pipe(
       tap(val => this.saveTokens(val)),
-      catchError(err => {
+      catchError((err: TokenResponseFailure) => {
         this.logout()
         return throwError(err)
       })

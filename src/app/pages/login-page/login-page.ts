@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Auth} from '../../auth/auth';
 import {delay, from, map, skip, take} from 'rxjs';
@@ -17,6 +17,8 @@ export class LoginPage {
   authService = inject(Auth);
   router = inject(Router);
 
+ isPasswordVisible = signal<boolean>(false)
+
   form = new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required)
@@ -33,5 +35,14 @@ export class LoginPage {
         })
     }
 
+  }
+
+  protected showHidePassword() {
+    // this.isPasswordVisible.set(!this.isPasswordVisible())
+    if(this.isPasswordVisible() === true) {
+      this.isPasswordVisible.set(false)
+    } else {
+      this.isPasswordVisible.set(true)
+    }
   }
 }

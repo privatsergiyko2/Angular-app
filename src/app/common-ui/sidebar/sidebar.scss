@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  padding: 20px 12px;
+
+}
+
+.main-menu-list {
+  display: grid;
+  grid-gap: 8px;
+
+}
+
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 16px 0.5fr max-content;
+  grid-gap: 12px;
+  color: var(--light-color);
+  padding: 16px 12px;
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  list-style: none;
+  background: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  width: 100%;
+  border-radius: 4px;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--dark-hover-color);
+    color: var(--primary-color);
+  }
+}

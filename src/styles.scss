@@ -5,6 +5,7 @@
   --light-color: #FFFFFF;
   --primary-color: #AE7AFF;
   --gray-color: #5F646D;
+  --dark-hover-color: #161616;
 }
 
 *,
@@ -19,7 +20,7 @@
 body {
   background: var(--dark-color);
   color: var(--light-color);
-  //background-image: url(/assets/imgs/background.jpg);
+  background-image: url("../public/assets/imgs/background-img.png");
 }
 
 
@@ -108,4 +109,27 @@ body {
   font-size: 14px;
   line-height: 21px;
   color: var(--light-color);
+}
+
+
+.password-input {
+  position: relative;
+
+}
+
+.password-eye-btn {
+  position: absolute;
+  top: 38%;
+  right: 53%;
+  //transform: translateY(-50);
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #FFFFFFBF;
+}
+
+
+
+.password-eye-btn.active {
+  color: var(--primary-color);
 }
