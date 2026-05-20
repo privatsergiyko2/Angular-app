@@ -18,9 +18,10 @@
 
 <p class="medium-text mb-20">Подписчики</p>
 
-<pre>{{ subscribers$ | async | json }}</pre>
 
-<!--<app-subscribe-card></app-subscribe-card>-->
+@for (profile of (subscribers$ | async) | slice : 0 : 3; track $index) {
+  <app-subscribe-card [profile]="profile"></app-subscribe-card>
+}
 
 
 <div class="mt-20 to-subscribers">

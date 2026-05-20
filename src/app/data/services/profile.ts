@@ -27,7 +27,7 @@ export class Profile {
 
 
   getSubscribersShortList() {
-    return this.http.get<Pageble<Profile>>(`${this.baseApiUrl}/account/subscribers`)
+    return this.http.get<Pageble<Profile>>(`${this.baseApiUrl}/account/subscribers/`)
       .pipe(
         map(res => res.items)
       )

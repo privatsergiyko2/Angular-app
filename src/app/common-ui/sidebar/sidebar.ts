@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {SvgIcon} from '../svg-icon/svg-icon';
-import {AsyncPipe, JsonPipe, NgForOf} from '@angular/common';
+import {AsyncPipe, JsonPipe, NgForOf, SlicePipe} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {SubscribeCard} from './subscribe-card/subscribe-card';
 import {Profile} from '../../data/services/profile';
@@ -14,7 +14,8 @@ import {firstValueFrom} from 'rxjs';
     RouterLink,
     SubscribeCard,
     AsyncPipe,
-    JsonPipe
+    JsonPipe,
+    SlicePipe
   ],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
