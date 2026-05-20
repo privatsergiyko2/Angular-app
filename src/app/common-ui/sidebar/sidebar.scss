@@ -1,6 +1,7 @@
 :host {
   display: block;
   padding: 20px 12px;
+  //background: var(--dark-color);
 
 }
 
@@ -20,6 +21,7 @@
   cursor: pointer;
   border: none;
   align-items: center;
+  text-decoration: none;
   list-style: none;
   background: none;
   font-weight: 700;
@@ -42,4 +44,23 @@
 .menu-item svg {
   width: 16px;
   height: 16px;
+}
+
+
+.to-subscribers {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+}
+
+.to-subscribers-link  {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+
+.to-subscribers-icon {
+  width: 18px;
+  height: 18px;
 }

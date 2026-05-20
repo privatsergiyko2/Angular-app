@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {Sidebar} from '../sidebar/sidebar';
 import {Profile} from '../../data/services/profile';
@@ -12,7 +12,7 @@ import {Profile} from '../../data/services/profile';
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
-export class Layout {
+export class Layout implements OnInit {
   profileService = inject(Profile)
 
   ngOnInit() {

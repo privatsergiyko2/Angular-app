@@ -15,3 +15,19 @@
     </li>
   </ul>
 </nav>
+
+<p class="medium-text mb-20">Подписчики</p>
+
+<pre>{{ subscribers$ | async | json }}</pre>
+
+<!--<app-subscribe-card></app-subscribe-card>-->
+
+
+<div class="mt-20 to-subscribers">
+  <a
+    [routerLink]="['/subscribers']"
+    class="to-subscribers-link medium-text"
+  >Все подписчики</a>
+  <svg icon="arrow" class="to-subscribers-icon"></svg>
+
+</div>
