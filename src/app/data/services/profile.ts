@@ -2,6 +2,8 @@ import {inject, Injectable, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Pageble} from '../interfaces/pageble.interface';
 import {map, pipe, tap} from 'rxjs';
+import {IProfile} from '../interfaces/profile.interfaces';
+
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +11,10 @@ import {map, pipe, tap} from 'rxjs';
 export class Profile {
   http = inject(HttpClient);
 
-  me = signal(null)
+  me = signal<IProfile | null>(null);
+
+  filteredProfiles = signal<IProfile[]>([]);
+
 
   baseApiUrl = 'https://icherniakov.ru/yt-course'
   id: any;
@@ -21,25 +26,26 @@ export class Profile {
   avatarUrl: any;
 
 
-  getAccount(id: String) {
-    return this.http.get<Profile>(`${this.baseApiUrl}/account/${id}`, {});
+  getAccount(id: string) {
+    return this.http.get<IProfile>(`${this.baseApiUrl}/account/${id}`, {});
   }
 
 
-  getSubscribersShortList() {
-    return this.http.get<Pageble<Profile>>(`${this.baseApiUrl}/account/subscribers/`)
+  getSubscribersShortList(subsAmmount = 3) {
+    return this.http.get<Pageble<IProfile>>(`${this.baseApiUrl}/account/subscribers/`)
       .pipe(
-        map(res => res.items)
+        map(res => res.items.slice(0, subsAmmount))
       )
   }
 
 
   getTestAccounts() {
-    return this.http.get<Profile[]>(`${this.baseApiUrl}/account/test_accounts`)
+    return this.http.get<IProfile[]>(`${this.baseApiUrl}/account/test_accounts`)
   }
 
+
   getMe() {
-    return this.http.get<Profile>(`${this.baseApiUrl}/account/me`)
+    return this.http.get<IProfile>(`${this.baseApiUrl}/account/me`)
       .pipe(
         tap((res: any) => {
           this.me.set(res)
@@ -50,7 +56,24 @@ export class Profile {
 
 
   patchProfile(profile: Partial<Profile>) {
-    return this.http.patch(`${this.baseApiUrl}/account/me`, profile)
+    return this.http.patch<IProfile>(`${this.baseApiUrl}/account/me`, profile)
+  }
+
+  uploadAvatar(file: File) {
+    const fd = new FormData();
+    fd.append('image', file);
+    return this.http.post<IProfile>(`${this.baseApiUrl}/account/upload_image`, fd)
+  }
+
+  filterProfiles(params: Record<string, any>) {
+    return this.http.get<Pageble<IProfile>>(
+      `${this.baseApiUrl}/account/accounts`,
+    {
+      params
+    }
+    ).pipe(
+      tap(res => this.filteredProfiles.set(res.items)),
+    )
   }
 }
 

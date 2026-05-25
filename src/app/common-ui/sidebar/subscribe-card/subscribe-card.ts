@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Profile} from '../../../data/services/profile';
+import {IProfile} from '../../../data/interfaces/profile.interfaces';
 
 @Component({
   selector: 'app-subscribe-card',
@@ -8,5 +9,5 @@ import {Profile} from '../../../data/services/profile';
   styleUrl: './subscribe-card.scss',
 })
 export class SubscribeCard {
-@Input() profile!: Profile;
+  @Input() profile!: IProfile;
 }
